@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/login.css">
+    <title>Login</title>
+</head>
+<body>
+    <div class="main">
+        <div class="container1">
+          <div class="div-link">
+            <a href="/index" class="link-index">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+                    <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z"/>
+                </svg>
+            </a>
+        </div>
+          <div class="titulo">
+            <h1>Bem vindo</h1>
+            <p class="sub">Insira seu email e senha para fazer login</p>
+          </div>
+          <form class="form" method="post" action="/login" enctype="multipart/form-data">
+            <div class="form-control">
+              <label for="email">Email</label>
+              <input type="text" id="email" name="email" placeholder="Insira seu email" />
+            </div>
+  
+            <div class="form-control">
+              <label for="password">Senha</label>
+              <input type="password" id="password" name="senha" placeholder="Insira sua senha"/>
+            </div>
+  
+            <button class="button-entrar" type="submit">Entrar</button>
+          </form>
+          <button class="button-criar">
+            <a href="/cadastro" class="criar-conta">Criar conta</a>
+          </button>
+        </div>
+        <div class="container2">
+          <img src="/siteImagens/login.webp" alt="imagem" width="100%" height="100%" />
+        </div>
+      </div>
+      <script
+        src="https://kit.fontawesome.com/021e83338f.js"
+        crossorigin="anonymous"
+      ></script>
+    </body>
+    
+    <!-- <div id="content">
+        <div class="link-index">
+            <a href="/index">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+                    <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z"/>
+                </svg>
+            </a>
+        </div>
+        <h1>Bem Vindo(a)!</h1>
+        <form action="/login" method="post" enctype="multipart/form-data">
+            <div class="input-bar">
+                <label for="email">Email</label>
+                <input type="email" name="email" class="input" required>
+                <img class="email-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAfdJREFUSEuNlWtVQ0EMhL8oAAeAA1AAOAAHoKBFCUUBdUAdUBRQCeCAKlhOdrPd7Ityf/T07iOZmUxyhfYRIMSfbgtm6/VRf0r/z3fjjiAEy2lX2wgZULeeIB2AjcFbAoNRYvhkc2b/YlDkGgQdsCmMM4OE7gZ4RTg/Kn8HuFr4Ah4RthpH3JZunKVcNayIaFDycrST8SsIFzGBu5djXAG74+6qC25vlyCfBijG9kXOCX4iRdhkNl5TjzrWppC9ixLDqTOfZyDBSyGwCvA0U6aRcQVh0bSJJIuXJzN4Ank252xB7iH8pMudixTtmxlEIymg5wmD6volsAVOAJXsFmHXVFrPvJsk+5gknjko4WqQUmaJMqtThA1Brk26JciL1WNJMKTwAaj+CiTGMfZOosQ8S3TIbIqsgIUpuTaRHswhL0FYNrMrxUnOrfrAJegseBdgbZLp5T0BTbLJhXWdU8VxNjVqMbMfcAcXqMfXRl+D78YTyEs0brSoXTd/HO8jXT2oQQJZ1WAwMZq+GnRIV8tRH5hE/oPTjeh59zVAxYqcIqjN1PflmU3N2gMjst8BzsssSiF1XKtTzv6qQdFpNnHlWwgPITVqNYv6wnaTYTBBOza1A/00/VvZgbG62gx86z84fYIjQcv07aharMpFo/RT1RowswTwC1dh8CAsmvARAAAAAElFTkSuQmCC"/>
+            </div>
+            <div class="input-bar">
+                <label for="senha">Senha</label>
+                <input type="password" name="senha" class="input" required>
+                <img class="password-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAcRJREFUSEuNlf1RwzAMxX+agGOClkkoG3QDygRcJ2i7ARvABjBCmYR2AzYwZ0dJLEtOyR9tTrH18d6TJISPICSSQP4p7+5c+ajW+t2aJPhUTsx2e6K2z0ksx5m8uZxmwxbhlcRGo59JnATOQw39aqoKaihM1h8Cz95R8XwCjjHMg9VApJAXaDXEFvhUB3uQL+VjBxz0zBPIeebDwpvPTE9Q6Bl4FNgn4c1yKkdIB+AbFDqFq+amS7JGLcgI3CfhtxHNGvjRUk2ibdIBhBMfI1g9B7VOYyRq3INIiwEEkka4UUHArsI5dph1MDegDRBk6yMLG5K8Q8oYNxq36NYdLnBJ8JIVZUgOVHQBVr1OjjU3STPfffAkqzf9m4lzc6Q3l4rLkY5MjSG85dYp4/a80gDDQde8Vl71GK05cEKwZdejtW1YW8HM3CSAvsjKNB9H+qQoE8CRqRUISYbLgQycHIuh23R2XPcC/AeimoMRweBevcoWlpYrb6ECy0Ij02DGugZUiLQCA2ogwV/grtfENWduZcIVZD0vlNw3/slrMW+xlV/04eAdpXQFdm753AbA1thruiD0BEKrokaabZuMCffka8//AVlF4BvTFSNeAAAAAElFTkSuQmCC"/>
+            </div>
+            <button type="submit" id="btn">Login</button>
+        </form>
+        <p>Cadastre-se <a href="cadastro">aqui</a> ! </p>
+    </div>
+
+    <script>
+        const input = document.querySelectorAll('.input');
+
+        function inputFocus() {
+            this.parentNode.classList.add('focus');
+        }
+
+        function inputBlur() {
+            if(this.value == '' || this.value === null){
+                this.parentNode.classList.remove('focus');
+            }
+        }
+
+        input.forEach((e) => {
+            e.addEventListener('focus', inputFocus);
+            e.addEventListener('blur', inputBlur);
+        })
+    </script> -->
+</body>
+</html>

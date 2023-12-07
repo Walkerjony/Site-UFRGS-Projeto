@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link rel="stylesheet" href="/css/anotacao.css">
+    <title>Comentários</title>
+</head>
+<body>
+    
+    <%- include('sidebar'); %>
+
+    <div class="main-content">
+
+        <div class="container-form">
+            <form action="/criarAnotacao/:id" method="post">
+                <input type="text" name="titulo" class="input-anotacao" name="nomeanotacao" placeholder="Digite o Título do Livro" required/>
+                <button type="submit" class="botao-enviar">Criar Anotação</button>
+            </form>
+        </div>
+        <% let valorPorcentagem = 0; %>
+        <% dadosAnotacao.forEach(function(dados) { %>
+        <div class="card">
+            <div class="cabecalho">
+                <p class="titulo-card"><%=dados.titulo%></p>
+                <a href="/deletarAnotacao/<%=dados.id_anotacao%>"><img class="icone" src="/siteImg/trash.svg" alt=""></a>
+            </div>
+            <div class="descricao-livro">
+                <form action="/editaTopico/<%=dados.id_anotacao%>" method="post">
+                    <textarea name="nomeTopico"  class="texto-descricao"><%=dados.nome%></textarea>
+                    <button class="button-23" type="submit" role="button">Salvar</button>
+                </form>                
+            </div>
+            <div class="form-card">
+                
+                <div class="teste">
+                    <div class="form-paginas">
+                        <form action="/modificaTopico/<%=dados.id_anotacao%>" method="post">
+                            <input type="text" class="input-topico" name="nome" placeholder="Adicionar um Tópico"/>
+                                <input type="image" class="icone" src="/siteImg/send.png" alt="Submit" />
+                        </form>
+                        <form  action="/modificaAnotacao/<%=dados.id_anotacao%>" method="post">
+                              <input type="number" class="input-paginas" name="qnt_paginas"  placeholder="<%=dados.qnt_paginas%>">
+                            <input type="number" class="input-paginas" name="qnt_lidas" placeholder="<%=dados.qnt_lidas%>"> <br>
+                            <button type="submit" class="botao-salvar">Salvar</button>
+                    </form> <br>
+                    <% valorPorcentagem = (dados.qnt_lidas / dados.qnt_paginas) * 100; %>
+                    <h3 class="">Total lido: <%= valorPorcentagem.toFixed(2) %>%</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% }); %> 
+
+    </div>
+
+    <script>
+        let btn = document.querySelector('#btn')
+        let sidebar = document.querySelector('.sidebar')
+
+        btn.onclick = function() {
+            sidebar.classList.toggle('active');
+        };
+    </script>
+
+</body>
+</html>

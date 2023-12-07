@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link rel="stylesheet" href="/css/comentario.css">
+    <title>Comentário</title>
+</head>
+<body>
+    
+    <%- include('sidebar'); %>
+
+
+    <div class="main-content">
+
+        <% dadosLivro.forEach(function(dados) { %>
+            <div class="inf_livro">
+                <div class="div-img">
+                    <img class="img-livro" src="/capasLivros/<%=dados.foto_livro%>" alt="Capas Livros">
+                </div>
+                <div class="autor-titulo">
+                    <p class="titulo"><b>Título:</b> <%= dados.titulo %></p>
+                    <p><b>Autor:</b> <%= dados.autor %></p>
+                    <div class="descricao">
+                       <strong> <p class="texto-descricao">Descrição do Livro: </strong> <%= dados.descricao %></p>
+                    </div>
+                </div>
+            </div> 
+
+            <% if (dados.pdf_livro) { %>
+                <p class="link_compra"><b>Link para o PDF:</b> <a href="<%=dados.pdf_livro%>"><%=dados.pdf_livro%></a></p>
+                <%} else { %>
+                    <p class="link_compra"><b>Link para a compra:</b> <a href="<%=dados.link_compra%>"><%=dados.link_compra%></a></p>
+                    <% } %>
+            
+            <div class="div-comentario">
+                <form action="/comentario/<%=dados.id_livro%>" method="post">
+                <textarea id="novoComentario" rows="4" name="comentario" cols="50" placeholder="Digite seu comentário"></textarea><br>
+                <button type="submit" onclick="enviarComentario()">Enviar</button>
+            </form>
+                <h2 class="titulo-comentario">Comentários</h2>
+                <% for (var i = 0; i < dadosComentario.length; i++) { %>
+                    <ul>
+                        <li>
+                            <p><strong>Usuário:</strong> <%= dadosUser[i].nome %> <a href="/deletarComentario/<%=dadosComentario[i].id_comentario%>"><i class="bx bx-trash" id="btn"></i></p></a> 
+                            <p><strong>Comentário</strong> <%= dadosComentario[i].comentario %></p> 
+                        </li>
+                        <% } %>
+                    </ul>
+            </div>
+        <% }); %>
+        
+    </div>
+
+    <script>
+        let btn = document.querySelector('#btn')
+        let sidebar = document.querySelector('.sidebar')
+
+        btn.onclick = function() {
+            sidebar.classList.toggle('active');
+        };
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+var mysql = require('mysql');
+const { VARCHAR } = require('mysql/lib/protocol/constants/types');
+var con = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "",
+    database: "tcc"
+});
+
+con.connect(function(err) {
+    if(err) throw err;
+    console.log("Conectado");
+
+    // Dados Tabela Universidade -------------------------------------------------------------------------------------
+    var sql = "INSERT INTO tb_universidade (sigla_universidade) VALUES ?";
+
+    var values = [
+        ['UFRGS'],
+        ['USP']
+    ];
+
+    con.query(sql, [values], function (err, result) {
+        if (err) throw err;
+            console.log("Número de registros inseridos: " + result.affectedRows); 
+    });
+
+    //Dados Tabela Livro -------------------------------------------------------------------------------
+
+    var sql = "INSERT INTO tb_livro (titulo, autor, descricao, pdf_livro, link_compra, foto_livro, fk_id_universidade) VALUES ?";
+    var values = [
+        ['A Terra dos Mil Povos', 'Kaká Werá', 'Kaká é um apelido, um escudo. Segundo a nossa tradição, uma palavra pode proteger ou destruir uma pessoa; o poder de uma palavra na boca é o mesmo de uma flecha no arco, de modo que às vezes usamos apelidos como patuás. Werá Jecupé é o meu tom, ou seja, meu espírito nomeado. De acordo com esse nome, meu espírito veio do leste, fazendo um movimento para o sul, entonando assim um som, uma dança, um gesto do espírito para a matéria, que nos apresenta ao mundo como uma assinatura. Essa assinatura, registrada na alma, me faz algo como neto do Trovão, bisneto de Tupã. É dessa maneira que somos nomeados, para que não se perca a qualidade da Natureza de que descendemos', '', 'https://www.amazon.com.br/Terra-dos-mil-Povos-Hist%C3%B3ria/dp/6586028043', 'capa-terra-dos-mil-povos4.webp', 1] ,
+        ['Água Funda', 'Ruth Guimarães', 'Esta nova edição de Água funda, que se tornou um clássico da literatura brasileira do século XX, conta ainda com excertos da crítica da época de seu lançamento, incluindo nomes como Brito Broca, Antonio Candido e Álvaro Lins, é uma das primeiras entrevistas de Ruth Guimarães, saudada então como uma revelação de nossas letras.', '', '​​https://www.amazon.com.br/%C3%81gua-funda-Ruth-Guimar%C3%A3es/dp/8573267011', 'agua_funda.webp', 1], 
+        ['Cem anos de solidão', 'Gabriel Garcia Márquez', 'Gabriel García Márquez, nasceu em 1928 na aldeia de Aracataca, nas imediações de Barranquilla, Colômbia. Autor de alguns dos maiores romances do século XX e mestre do realismo mágico latino-americano, recebeu o Prêmio Nobel de Literatura em 1982. Entre suas principais obras estão Crônica de uma morte anunciada, Ninguém escreve ao coronel, O amor nos tempos do cólera, Notícia de um sequestro e Memória de minhas putas tristes.', '', 'https://www.amazon.com.br/anos-solid%C3%A3o-Gabriel-Garcia-M%C3%A1rquez/dp/8501012076', 'cem-anos-de-solidao.webp', 1],
+        ['Um útero é do tamanho de um punho', 'Angélica Freitas', '', '', 'https://www.amazon.com.br/Um-%C3%BAtero-%C3%A9-tamanho-punho/dp/8535929827', 'um-utero-e-do-tamanho-de-um-punho.webp', 1],
+        ['Lisístrata', 'Aristófanes', '', '', 'https://www.amazon.com.br/Lis%C3%ADstrata-Arist%C3%B3fanes/dp/8577151565', 'lisistrata.webp', 1],
+        ['Várias histórias', 'Machado de Assis', 'Machado de Assis, além de ser conhecido pelos excelentes romances, é exímio na criação de contos, esses são verdadeiras portas de entrada para o primoroso mundo narrativo do autor. O conto machadiano é uma arte de pormenores, nele o leitor  tem contato com a sutileza na escrita, os traços de ironia, a descrição de personagens ímpares, além de um cenário único do Rio de Janeiro do século XIX. Em Várias histórias, particularmente, estão alguns de seus contos mais famosos, como “A cartomante”; “Uns braços”, “Um apólogo”, entre outros.', 'http://www.dominiopublico.gov.br/download/texto/bv000256.pdf', '', 'varias_historias.webp', 1],
+        ['A falência', 'Júlia Lopes Almeida', 'O último benefício era-lhe ministrado pela filha, como um sacramento. Nem ele soube quanto tempo durou aquela crise de pranto que o sufocava. Quando Ruth acabou a sua música e ele lhe sentiu os passos leves e apressados na areia, teve ímpetos de chamá-la e cobri-la de beijos. Mais forte, porém, do que o seu amor e a sua ternura, foi o medo de enfraquecer. Ele fugiu para dentro; tinha tomado a sua resolução. Cada homem é criado para um fim. O dele tinha sido o de ganhar dinheiro; ganhara-o, cumprira o seu destino. Não podendo recomeçar, inutilizado para a ação, devia acabar de uma vez.', 'http://www.dominiopublico.gov.br/download/texto/bi000169.pdf', '' , 'a_falencia.webp', 1],
+        ['Coral e outros poemas', 'Sophia de Mello Breyner Andresen', 'Apesar das ruínas e da morte, Onde sempre acabou cada ilusão, A força dos meus sonhos é tão forte, Que de tudo renasce a exaltação E nunca as minhas mãos ficam vazias.', '', 'https://www.amazon.com.br/outros-poemas-Sophia-Breyner-Andresen/dp/8535930795', 'coral_e_outros_poemas.webp', 1],
+        ['Caderno de Memórias Coloniais', 'Isabela Figueiredo', 'Obra-prima da literatura em língua portuguesa, este livro de Isabela Figueiredo é um devastador ajuste de contas com o próprio pai e o colonialismo na África. Num estilo vivo que expõe espectros ainda hoje latentes em Portugal, Caderno de memórias coloniais é um relato sem papas na língua do racismo português em Moçambique às vésperas do processo de descolonização. É também a história de amor de uma filha por um pai que, desprezando até a morte os africanos, parecia personificar as contradições de uma metrópole que marginalizava uma população inteira. ', '', 'https://www.amazon.com.br/Caderno-mem%C3%B3rias-coloniais-Isabela-Figueiredo/dp/8593828949', 'caderno_de_memorias_coloniais.webp', 1],
+        ['Ponciá Vicêncio', 'Conceição Evaristo', '“Nas primeiras vezes que Ponciá Vicêncio sentiu o vazio na cabeça, quando voltou a si, ficou atordoada. O que tinha acontecido? Quanto tempo tinha ficado naquele estado? Tentou relembrar os fatos e não sabia como tudo se dera. Sabia, apenas, que, de uma hora para outra, era como se um buraco abrisse em si própria, formando uma grande fenda, dentro e fora dela, um vácuo, com o qual ela se confundia. Mas continuava, entretanto, consciente de tudo ao redor. Via a vida e os outros se fazendo, assista aos movimentos alheios se dando, mas se perdia, não conseguia saber de si. No princípio, quando o vazio ameaçava encher a sua pessoa, ela ficava possuída pelo medo. Agora gostava da ausência, na qual ela se abrigava, desconhecendo-se, tornando-se alheia de seu próprio eu.”', '', 'https://www.amazon.com.br/Ponci%C3%A1-Vic%C3%AAncio-Concei%C3%A7%C3%A3o-Evaristo/dp/8534705313', 'poncia.webp', 1],
+        ['Deixa o Quarto Como Está', 'Amílcar Bettega', 'Um rosto com existência independente de qualquer corpo espreita um homem numa casa que reestrutura seus cômodos por conta própria, Um jovem recebe como herança do pal uma pequena caixa e, ao tocar seu conteúdo - uma massa informe e gelatinosa - não consegue mais desgrudá-lo da mão pelo resto da vida. Situações como essas são os pontos de partida, ou de chegada, dos contos deste livro. Neles o insólito toma progressivamente conta dos ambientes, dos personagens e da própria escrita que parece assumir como natural a lógica desses mundos transtornados. Os relatos assemelha-se a documentários de pesadelos, dada a extrema consistência e veracidade das descrições. Nada aqui é seguro ou previsível. Lugares, objetos, indivíduos, tudo se transforma de modo inesperado - e a própria voz que narra, quase sempre em primeira pessoa, pode ser ao mesmo tempo vítima e autora de um engano. Ao se deixar conduzir por ela, o leitor será forçado a reexaminar seu próprio modo de estar no mundo.', '', 'https://www.amazon.com.br/Deixe-quarto-Amilcar-Bettega-Barbosa/dp/8535902392', 'deixe-o-quarto-como-esta.webp', 1],
+        ['Poemas Escolhidos', 'Gregório de Matos', '', '', 'https://www.amazon.com.br/Poemas-escolhidos-Greg%C3%B3rio-Matos/dp/8535918582', 'poemas_escolhidos.webp', 2],
+        ['Quincas Borba', 'Machado de Assis', 'Rubião achou um rival no coração de Quincas Borba - um cão, um bonito cão, meio tamanho, pelo cor de chumbo, malhado de preto. Quincas Borba levava-o para toda parte, dormiam no mesmo quarto. De manhã, era o cão que acordava o senhor, trepando ao leito, onde trocavam as primeiras saudações. Uma das extravagâncias do dono foi dar-lhe o seu próprio nome; mas, explicava-o por dois, um doutrinário, outro particular.', 'http://www.dominiopublico.gov.br/download/texto/bv000243.pdf', '', 'quincas_borba.webp', 2],
+        ['Alguma poesia', 'Carlos Drummond de Andrade', '“Meu pai cochilava, encostado ao balcão. Na saleta da nossa casa, por detrás da bodega, eu recordava as lições, entorpecido. Havia um grande silêncio, um silêncio incômodo. Às vezes punha-me a tossir, para me convencer de que não tinha ficado surdo. Era como se a gente houvesse deixado a terra. De repente surgiam vozes estranhas. Que eram? Ainda hoje não sei. Vozes que iam crescendo, monótonas, e me causavam medo. Um alarido, um queixume, clamor sempre no mesmo tom. As ruas enchiam-se, a saleta enchia-se - e eu tinha a impressão de que o brabo lastimoso saía das paredes, saía dos móveis. Fechava os ouvidos para não perceber aquilo: as vozes continuavam, cada vez mais fortes. Que seriam? A verdade é que muitas vezes perguntei a mim mesmo se realmente ouvia aquele barulho grande, diferente dos outros barulhos. Perguntei naquele tempo ou perguntei depois? Não sei. Tenho me esforçado por tornar-me criança - e em consequência misturo coisas atuais a coisas antigas.”', '', 'https://www.amazon.com.br/Alguma-poesia-Carlos-Drummond-Andrade/dp/6555874619', 'alguma_poesia.webp', 2],
+        ['Angústia', 'Graciliano Ramos', '', '', 'https://www.amazon.com.br/Ang%C3%BAstia-Graciliano-Ramos/dp/8501115940', 'angustia.webp', 2],
+        ['Mensagem', 'Fernando Pessoa', '', '', 'https://www.amazon.com.br/Mensagem-Fernando-Pessoa/dp/8567854091', 'mensagem.webp', 2],
+        ['Terra Sonâmbula', 'Mia Couto', '', '', 'https://www.amazon.com.br/Terra-son%C3%A2mbula-Mia-Couto/dp/8535927018', 'terra_sonambula.webp', 2],
+        ['Campo Geral', 'Guimarães Rosa', 'A infância é o tempo de descobertas. É a fase da vida em que o ser humano recebe e retribui os sentimentos à sua volta com maior vigor e integridade. Com Miguilim, menino que protagoniza esta novela de João Guimarães Rosa, não é diferente. Contudo, a visão de mundo repleta de sensibilidade que vinca a personalidade da criança transforma o conjunto de situações que ela experimenta num redemoinho sem precedentes de sensações. Neste livro, tem-se o privilégio de captar o âmago da vida no sertão através do olhar de uma criança, uma escolha que revela a grandeza literária de Guimarães Rosa.', '', '​​https://www.amazon.com.br/Campo-Geral-Jo%C3%A3o-Guimar%C3%A3es-Rosa/dp/8526025074', 'campo_geral.webp', 2],
+        ['Romanceiro da Inconfidência', 'Cecília Meireles', '', '', 'https://www.amazon.com.br/Romanceiro-Inconfid%C3%AAncia-Cec%C3%ADlia-Meireles/dp/8526021907', 'romanceiro.webp', 2],
+        ['Nove Noites', 'Bernardo Carvalho', 'Nove noite mistura fatos da vida do antropólogo norte-americano Buell Quain - que viveu entre os índios krahô, no Tocantins, e se matou em 1929, aos 27 anos - com as elucubrações do narrador - que, 62 anos depois, ao conhecer o episódio em um artigo de jornal, passa a pesquisar obsessivamente a vida do americano. A história é dividida em dois tempos - há o relato da vivência de Quain entre índios; e a investigação do narrador, em busca de pistas que expliquem a morte do antropólogo. Por meio da história de Buell Quain, Bernardo Carvalho revela as contradições e os desejos de um homem sozinho numa terra estranha, confrontado com os seus próprios limites e com a alteridade mais absoluta. ', '', 'https://www.amazon.com.br/Nove-noites-Bernardo-Carvalho/dp/8535908617', 'nove_noites.webp', 2]
+    ];
+
+    con.query(sql, [values], function (err, result) {
+        if (err) throw err;
+        console.log("Número de registros inseridos: " + result.affectedRows); 
+     });
+
+
+
+    con.end();
+});
+   

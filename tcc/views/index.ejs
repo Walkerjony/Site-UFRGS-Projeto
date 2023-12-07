@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link rel="stylesheet" href="/css/index.css">
+    <title>Index</title>
+</head>
+<body>
+    <%- include('sidebar'); %>
+    <div class="main-content">
+        <h1 class="universidade">UFRGS</h1>
+        <div class="container-cards">
+            <% if(dadosLivro.length > 0) { %>
+                <div class="row">
+                    <% dadosLivro.forEach(function(dados) { %>
+                        <%if(dados.fk_id_universidade == 1) {%>
+                            <div class="col-md-4 mb-4">
+                                <div class="card">
+                                    <a href="/comentario/<%=dados.id_livro%>">
+                                        <div class="teste">
+                                            <img class="card-img" src="/capasLivros/<%=dados.foto_livro%>" alt="Capas Livros">
+                                        </div>
+                                    </a>    
+                                    <div class="texto">
+                                        <p class="titulo"><b>Título:</b> <%= dados.titulo %></p>
+                                        <p><b>Autor:</b> <%= dados.autor %></p>
+                                    </div>
+                                </div>
+                            </div>
+                        <% } %>
+                    <% }); %>
+                        <a href="/cadastrarLivro">
+                          <img src="https://img1.gratispng.com/20180421/ohq/kisspng-plus-and-minus-signs-computer-icons-symbol-5adb339987a731.2605557615243150335556.jpg" alt="">
+                        </a>
+                <% } %> 
+        </div>
+        <h1 class="usp">USP</h1>
+        <div class="container-cards">
+             <% if(dadosLivro.length > 0) { %>
+                <div class="row">
+                    <% dadosLivro.forEach(function(dados) { %>
+                        <%if(dados.fk_id_universidade == 2) {%>
+                            <div class="col-md-4 mb-4">
+                                <div class="card">
+                                    <a href="/comentario/<%=dados.id_livro%>">
+                                        <div class="teste">
+                                            <img class="card-img" src="/capasLivros/<%=dados.foto_livro%>" alt="Capas Livros">
+                                        </div>
+                                    </a>    
+                                    <div class="texto">
+                                        <p class="titulo"><b>Título:</b> <%= dados.titulo %></p>
+                                        <p><b>Autor:</b> <%= dados.autor %></p>
+                                    </div>
+                                </div>
+                            </div>
+                        <% } %>
+                    <% }); %>
+                    <a href="/cadastrarLivroPuc"> <img class="container-cards"  src="https://img1.gratispng.com/20180421/ohq/kisspng-plus-and-minus-signs-computer-icons-symbol-5adb339987a731.2605557615243150335556.jpg" alt=""></a>
+                    </div>
+            <% } %>
+        </div>
+        
+    </div>
+
+    <script>
+        let btn = document.querySelector('#btn')
+        let sidebar = document.querySelector('.sidebar')
+
+        btn.onclick = function() {
+            sidebar.classList.toggle('active');
+        };
+    </script>
+
+</body>
+</html>

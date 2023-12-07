@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link rel="stylesheet" href="/css/perfil.css">
+    <title>Perfil</title>
+</head>
+<body>
+    
+    <%- include('sidebar'); %>
+
+
+    <div class="main-content">
+        <% dadosConta.forEach(function(dados) { %>
+        <div class="container-perfil">
+            <form action="/atualizarPerfil/<%=dados.id_usuario%>" method="post" enctype="multipart/form-data" class="sign-up-form">
+                <h1>Editar Dados</h1>
+                <div class="input-field">
+                    <i class="fas fa-user"></i>
+                    <input type="text" name="nome" value="<%=dados.nome%>">
+                </div>
+                <div class="input-field">
+                    <i class="fas fa-envelope"></i>
+                    <input type="text" name="email" value="<%=dados.email%>">
+                </div>
+                <div class="input-field">
+                    <i class="fas fa-envelope"></i>
+                    <input type="text" name="descricao" value="<%=dados.descricao%>">
+
+                </div>
+                <div class="input-field">
+                    <i class="fas fa-image"></i>
+                    <input type="file" name="foto" placeholder="Foto" >
+                </div>
+                <input type="submit" value="Cadastrar" class="btn solid">
+                
+            </form>
+            
+        </div>
+        <% }); %> 
+
+    </div>
+
+    <script>
+        let btn = document.querySelector('#btn')
+        let sidebar = document.querySelector('.sidebar')
+
+        btn.onclick = function() {
+            sidebar.classList.toggle('active');
+        };
+    </script>
+
+</body>
+</html>

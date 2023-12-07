@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
+    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/cadastroLogin.css">
+    <title>Login</title>
+</head>
+<body>
+    <div class="container">
+        <div class="forms-container">
+            <div class="signin-signup">
+                <form action="/login" method="post" class="sign-in-form">
+                    <h2 class="title">Logar</h2>
+                    <div class="input-field">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" name="email" placeholder="Email" required>
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" name="senha" placeholder="Senha" required>
+                    </div>
+                    <input type="submit" value="Login" class="btn solid">
+
+                </form>
+
+                <form action="/cadastro" method="post" enctype="multipart/form-data" class="sign-up-form">
+                    <h2 class="title">Cadastrar</h2>
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        <input type="text" name="nome" placeholder="Nome" required>
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" name="email" placeholder="Email" required>
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" name="senha" placeholder="Senha" required>
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-envelope"></i>
+                        <input type="text" name="descricao" placeholder="Descrição" required>
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-image"></i>
+                        <input type="file" name="foto" placeholder="Foto" required>
+                    </div>
+                    <input type="submit" value="Cadastrar" class="btn solid">
+                    
+                </form>
+            </div>
+        </div>
+
+        <div class="panels-container">
+            <div class="panel left-panel">
+                <div class="content">
+                    <h3>Ainda não é cadastrado?</h3>
+                    <p>Faça o seu cadastro na nossa plataforma e entre em ação com as leituras obrigatórias 
+                        do seu vestibular!</p>
+                    <button class="btn transparent" id="sign-up-btn">Cadastre-se</button> <br>
+                </div>
+                <img src="/siteImg/img1.svg" class="image">
+            </div>
+
+            <div class="panel right-panel">
+                <div class="content">
+                    <h3>Já possui uma conta?</h3>
+                    <p>Realize o seu login agora mesmo, a leitura
+                        começa com você!</p>
+                    <button class="btn transparent" id="sign-in-btn">Faça login</button>
+                </div>
+                <img src="/siteImg/img2.svg" class="image">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const sign_in_btn = document.querySelector("#sign-in-btn");
+        const sign_up_btn = document.querySelector("#sign-up-btn");
+        const container = document.querySelector(".container");
+
+        sign_up_btn.addEventListener('click', () => {
+            container.classList.add("sign-up-mode");
+        });
+
+        sign_in_btn.addEventListener('click', () => {
+            container.classList.remove("sign-up-mode");
+        });
+    </script>
+
+</body>
+</html>

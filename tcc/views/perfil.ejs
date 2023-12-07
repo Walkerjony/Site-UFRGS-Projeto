@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link rel="stylesheet" href="/css/perfil.css">
+    <title>Perfil</title>
+</head>
+<body>
+
+    <%- include('sidebar'); %>
+    <div class="main-content">
+          <div class="container-perfil">
+            <% dadosConta.forEach(function(dados) { %>
+            <div class="infos">
+                <label for="nome">Nome do Usuário:  </label>
+                <div class="div-infos">
+                    <p class="texto-user"><%=dados.nome%></p>
+                </div>
+                <label for="email">Email do Usuário: </label>
+                <div class="div-infos">
+                    <p class="texto-user"><%=dados.email%></p>
+                </div>
+                <label for="descricao">Descrição do Usuário: </label>
+                <div class="div-descricao">
+                    <p class="texto-user"><%=dados.descricao%></p>
+                </div>
+                <div class="div-botao">
+                    <a class="botao" href="/atualizarPerfil/<%=dados.id_usuario%>">Modificar Perfil</a>
+                </div>
+            </div>
+            <div class="div-foto">
+                <img class="user-foto" src="imagens/<%=dados.foto%>">
+            </div>
+            <% }); %> 
+         </div>
+    </div>
+    <script>
+        let btn = document.querySelector('#btn')
+        let sidebar = document.querySelector('.sidebar')
+
+        btn.onclick = function() {
+            sidebar.classList.toggle('active');
+        };
+    </script>
+    
+</body>
+</html>

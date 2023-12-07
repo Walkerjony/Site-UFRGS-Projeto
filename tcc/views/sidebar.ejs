@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link rel="stylesheet" href="/css/sidebar.css">
+    <title>Perfil</title>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="top">
+            <div class="logo">
+                <img src="/siteImg/pilha-de-livros.png" class="img">
+                <span class="logo_titulo">LEIA-SE</span>
+            </div>
+            <i class="bx bx-menu" id="btn"></i>
+        </div>
+        <div class="user">
+            <div class="user">
+                <% if (user) { %>
+                    <img src="imagens/<%=foto%>" alt="user" class="user-img">
+                    <p>Olá, <%= user %>!</p>
+                <% } else { %>
+                    <p>Você não está logado.</p>
+                <% } %>
+            </div>
+        </div>
+        <ul>
+            <li>
+                <a href="/index">
+                    <i class="bx bxs-grid-alt"></i>
+                    <span class="nav-item">Painel</span>
+                </a>
+            </li>
+            <li>
+                <a href="/anotacao">
+                    <i class="bx bxs-pencil"></i>
+                    <span class="nav-item">Anotações</span>
+                </a>
+            </li>
+            <li>
+                <a href="/perfil">
+                    <i class="bx bxs-user-circle"></i>
+                    <span class="nav-item">Perfil</span>
+                </a>
+            </li>
+            <li>
+                <a href="/logout">
+                    <i class="bx bxs-exit"></i>
+                    <span class="nav-item">Logout</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        let btn = document.querySelector('#btn')
+        let sidebar = document.querySelector('.sidebar')
+
+        btn.onclick = function() {
+            sidebar.classList.toggle('active');
+        };
+    </script>
+
+</body>
+

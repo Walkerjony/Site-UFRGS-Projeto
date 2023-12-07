@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/cadastrarLivro.css ">
+    <title>Criar Projetos</title>
+</head>
+<body>
+    <div id="content">
+        <h1>Cadastrar um Livro UFRGS!</h1>
+        <form action="/cadastrarLivro" method="post" enctype="multipart/form-data">
+            <div class="input-bar">
+                <label for="titulo">Titulo do Livro</label>
+                <input type="text" name="titulo" class="input" required>
+            </div>
+            <div class="input-bar">
+                <label for="autor">Autor do Livro</label>
+                <input type="text" name="autor" class="input" required>
+            </div>
+            <div class="input-bar">
+                <label for="autor">Descrição do Livro</label>
+                <input type="text" name="descricao" class="input" required>
+            </div>
+            <div class="input-bar">
+                <label for="nome">Link para compra do Livro</label>
+                <input type="text" name="link_compra" class="input" required>
+            </div>
+            <div class="input-bar">
+                <label for="pdf_livro">Pdf do Livro (Se disponível)</label>
+                <input type="text"  name="pdf_livro" class="input">
+            </div>
+            <div class="input-bar">
+                <label for="foto_livro">Capa do Livro</label>
+                <input type="file" name="foto_livro" class="input" required>
+            </div>
+            <button type="submit" style="background-color: #acbcb8;" class="btn">Criar</button>
+        </form>
+    </div>
+
+    <script>
+        const input = document.querySelectorAll('.input');
+
+        function inputFocus() {
+            this.parentNode.classList.add('focus');
+        }
+
+        function inputBlur() {
+            if(this.value == '' || this.value === null){
+                this.parentNode.classList.remove('focus');
+            }
+        }
+
+        input.forEach((e) => {
+            e.addEventListener('focus', inputFocus);
+            e.addEventListener('blur', inputBlur);
+        })
+    </script>
+
+    
+</body>
+</html>
